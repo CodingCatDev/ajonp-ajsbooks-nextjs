@@ -1,0 +1,36 @@
+{
+  "name": "ajonp-ajsbooks-nextjs",
+  "version": "0.0.1",
+  "description": "Next.js Example using Firestore, Firebase Hosting",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs.git"
+  },
+  "keywords": [
+    "nextjs",
+    "firestore",
+    "firebase",
+    "materialui"
+  ],
+  "author": "Alex Patterson <developer@ajonp.com> (https://ajonp.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs/issues"
+  },
+  "homepage": "https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs#readme",
+  "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "firebase": "^5.11.0",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rxfire": "^3.4.2"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  }
+}
