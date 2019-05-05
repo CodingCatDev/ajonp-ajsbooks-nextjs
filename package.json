@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs#readme",
   "dependencies": {
-    "@material-ui/core": "^3.9.3",
+    "@material-ui/core": "^4.0.0-beta.1",
+    "@material-ui/icons": "^4.0.0-beta.0",
+    "@material-ui/styles": "^4.0.0-beta.1",
     "@zeit/next-typescript": "^1.1.1",
     "firebase": "^5.11.0",
     "next": "^8.1.0",
@@ -33,5 +35,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next export"
+  },
+  "devDependencies": {
+    "@types/next": "^8.0.5"
   }
 }
