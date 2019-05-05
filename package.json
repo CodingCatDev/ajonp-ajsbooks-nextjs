@@ -21,6 +21,7 @@
   "homepage": "https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs#readme",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "@zeit/next-typescript": "^1.1.1",
     "firebase": "^5.11.0",
     "next": "^8.1.0",
     "react": "^16.8.6",
