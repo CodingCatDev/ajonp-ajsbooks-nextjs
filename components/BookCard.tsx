@@ -5,12 +5,14 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import NextLink from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
-    maxWidth: 400
+    maxWidth: 400,
+    minHeight: 300,
+    margin: 5
   },
   bullet: {
     display: 'inline-block',
@@ -25,15 +27,15 @@ const useStyles = makeStyles({
   }
 });
 
-function WelcomeCard() {
+const BookCard = ({ book }) => {
   const classes = useStyles();
-
   return (
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="h5" component="h2">
-          Here is an example of a book Card
+          {book.title}
         </Typography>
+        <Typography>{book.description}</Typography>
       </CardContent>
       <CardActions>
         <NextLink href="/">
@@ -42,6 +44,6 @@ function WelcomeCard() {
       </CardActions>
     </Card>
   );
-}
+};
 
-export default WelcomeCard;
+export default BookCard;
