@@ -1,7 +1,6 @@
-import * as React from 'react';
+import Container from '@material-ui/core/Container';
+import React from 'react';
 
-const IndexPage: React.FunctionComponent = () => {
-  return <h1>Hello Next.js 👋</h1>;
-};
-
-export default IndexPage;
+export default function App() {
+  return <Container maxWidth="lg">Hello Next.js 👋</Container>;
+}
