@@ -1,4 +1,5 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
 import { ThemeProvider } from '@material-ui/styles';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
@@ -28,7 +29,9 @@ class MyApp extends App {
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <MenuAppBar />
-          <Component {...pageProps} />
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Component {...pageProps} />
+          </Grid>
         </ThemeProvider>
       </Container>
     );

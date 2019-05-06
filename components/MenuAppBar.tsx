@@ -3,20 +3,19 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 
-const useStyles = makeStyles((theme: Theme) =>
+import MenuAppDrawer from '../components/MenuAppDrawer';
+
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      flexGrow: 1
-    },
-    menuButton: {
-      marginRight: theme.spacing(2)
+      flexGrow: 1,
+      paddingBottom: '10px'
     },
     title: {
       flexGrow: 1
@@ -42,16 +41,9 @@ function MenuAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          <MenuAppDrawer />
           <Typography variant="h6" className={classes.title}>
-            Photos
+            AJ's Books
           </Typography>
           {auth && (
             <div>
