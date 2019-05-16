@@ -2,6 +2,8 @@ import { Timestamp } from '@firebase/firestore-types';
 
 export default class Book {
   ageCategory?: string;
+  authorDisplayName?: string;
+  authorId?: string;
   description?: string;
   fiction?: boolean;
   genre?: string;

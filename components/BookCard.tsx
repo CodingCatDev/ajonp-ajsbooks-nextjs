@@ -1,4 +1,4 @@
-import Button from '@material-ui/core/Button';
+import { CardActionArea } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -62,21 +62,25 @@ const BookCard = ({ book }) => {
   return (
     <Card className={classes.card}>
       <NextLink href="/">
-        <CardMedia
-          className={classes.cardMedia}
-          image="/static/images/cards/book.png"
-          title={book.title}
-        />
+        <CardActionArea>
+          <CardMedia
+            className={classes.cardMedia}
+            image="/static/images/cards/book.png"
+            title={book.title}
+          />
+          <CardContent className={classes.cardContent}>
+            <Typography variant="h3" component="h1">
+              {book.title}
+            </Typography>
+            <Typography component="p">
+              Author:
+              {` ${book.authorDisplayName}`}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
       </NextLink>
-      <CardContent className={classes.cardContent}>
-        <Typography variant="h5" component="h2">
-          {book.title}
-        </Typography>
-      </CardContent>
       <CardActions className={classes.cardActions}>
-        <NextLink href="/">
-          <Button size="small">Open Book</Button>
-        </NextLink>
+        Summary:
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded
