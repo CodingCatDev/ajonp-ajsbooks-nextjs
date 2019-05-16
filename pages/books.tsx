@@ -4,9 +4,10 @@ import { collectionData } from 'rxfire/firestore';
 
 import BookCard from '../components/BookCard';
 import loadFirebase from '../lib/firebase';
+import Book from '../models/Book';
 
 export default class Books extends Component {
-  state = {
+  state: { books: Book[] } = {
     books: []
   };
   async componentDidMount() {
@@ -18,10 +19,9 @@ export default class Books extends Component {
   }
   render() {
     return (
-      <Grid container direction="row" justify="center" alignItems="center">
-        {' '}
-        {this.state.books.map(book => {
-          return <BookCard book={book} key={book.bookId} />;
+      <Grid container direction="row" justify="center">
+        {this.state.books.map((book: Book) => {
+          return <BookCard book={book} key={book.id} />;
         })}
       </Grid>
     );
