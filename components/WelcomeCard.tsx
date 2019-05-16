@@ -37,7 +37,7 @@ function WelcomeCard() {
       </CardContent>
       <CardActions>
         <NextLink href="/books">
-          <Button size="small">Books</Button>
+          <Button size="small">Go to Books</Button>
         </NextLink>
       </CardActions>
     </Card>
