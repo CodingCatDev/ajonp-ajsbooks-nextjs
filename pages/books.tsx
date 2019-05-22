@@ -12,7 +12,10 @@ export default class Books extends Component {
   };
   async componentDidMount() {
     const firebase = await loadFirebase();
-    const booksRef = firebase.firestore().collection('books');
+    const booksRef = firebase
+      .firestore()
+      .collection('books')
+      .orderBy('createdAt', 'desc');
     collectionData(booksRef, 'bookId').subscribe(books => {
       this.setState({ books });
     });
