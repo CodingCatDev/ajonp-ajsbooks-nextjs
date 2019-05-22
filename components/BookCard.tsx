@@ -14,7 +14,7 @@ import React from 'react';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    minWidth: 400,
+    width: 400,
     margin: 5,
     display: 'flex',
     flexDirection: 'column'
@@ -22,7 +22,14 @@ const useStyles = makeStyles(theme => ({
   cardContent: {
     display: 'flex',
     flex: '1 0 auto',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '375px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    '& h1': {
+      fontSize: '1.4rem'
+    }
   },
   cardMedia: {
     height: 0,
@@ -34,7 +41,8 @@ const useStyles = makeStyles(theme => ({
   cardDescription: {
     width: 368,
     height: 190,
-    overflow: 'auto'
+    overflow: 'auto',
+    whiteSpace: 'normal'
   },
   cardActions: {
     display: 'flex',
@@ -65,13 +73,11 @@ const BookCard = ({ book }) => {
         <CardActionArea>
           <CardMedia
             className={classes.cardMedia}
-            image="/static/images/cards/book.png"
+            image={book.cover || '/static/images/cards/book.png'}
             title={book.title}
           />
           <CardContent className={classes.cardContent}>
-            <Typography variant="h3" component="h1">
-              {book.title}
-            </Typography>
+            <Typography component="h1">{book.title}</Typography>
             <Typography component="p">
               Author:
               {` ${book.authorDisplayName}`}
