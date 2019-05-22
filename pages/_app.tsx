@@ -5,7 +5,7 @@ import Head from 'next/head';
 import React from 'react';
 
 import MenuAppBar from '../components/MenuAppBar';
-import theme from '../src/theme';
+import theme from '../themes/theme';
 
 class MyApp extends App {
   componentDidMount() {
