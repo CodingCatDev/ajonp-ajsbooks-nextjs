@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     '& h1': {
-      fontSize: '1.4rem'
+      fontSize: '1.4rem',
+      textTransform: 'uppercase'
     }
   },
   cardMedia: {
