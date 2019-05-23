@@ -73,7 +73,7 @@ const BookCard = (prop: any) => {
   };
   return (
     <Card className={classes.card}>
-      <NextLink as={`/book/${book.id}`} href={`/book?title=${book.title}`}>
+      <NextLink href={`/book?id=${book.id}`} as={`/book/${book.slug}`}>
         <CardActionArea>
           <CardMedia
             className={classes.cardMedia}

@@ -17,6 +17,7 @@ export default class Book {
   publishDate?: Timestamp | Date;
   rating?: number;
   status?: string;
+  slug?: string;
   title?: string;
   updatedAt?: Timestamp | Date;
 
