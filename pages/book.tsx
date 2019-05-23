@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import { withRouter } from 'next/router';
 
-export default class Book extends Component {
-  render() {
-    return <div>A book</div>;
-  }
-}
+const Book = withRouter(props => (
+  <div>
+    <p>{`Your id: ${props.router.query.id}` || 'No ID found'}</p>
+    <p>{`Your path: ${props.router.asPath}` || 'No As Path found'}</p>
+  </div>
+));
+export default Book;
