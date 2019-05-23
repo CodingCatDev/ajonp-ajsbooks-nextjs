@@ -9,6 +9,8 @@
   "hosting": [
     {
       "public": "dist/public",
+      "target": "ajsbooks-nextjs",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "/book/**",
