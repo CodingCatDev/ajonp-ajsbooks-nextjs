@@ -11,8 +11,10 @@ export default async function loadFirebase() {
   const firebase = await import('firebase/app');
   await import('firebase/firestore');
   try {
-    const app = firebase.initializeApp(firebaseConfig);
-    firebase.firestore(app);
+    if (!firebase.apps.length) {
+      const app = firebase.initializeApp(firebaseConfig);
+      firebase.firestore(app);
+    }
   } catch (err) {
     // we skip the "already exists" message which is
     // not an actual error when we're hot-reloading

@@ -4,7 +4,9 @@ export default class Book {
   ageCategory?: string;
   authorDisplayName?: string;
   authorId?: string;
+  createdAt?: Timestamp | Date;
   description?: string;
+  cover?: string;
   fiction?: boolean;
   genre?: string;
   hasAudio?: boolean;

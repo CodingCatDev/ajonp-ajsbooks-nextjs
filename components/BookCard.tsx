@@ -12,6 +12,8 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
 
+import Book from '../models/Book';
+
 const useStyles = makeStyles(theme => ({
   card: {
     width: 400,
@@ -62,7 +64,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const BookCard = ({ book }) => {
+const BookCard = (prop: any) => {
+  const book: Book = prop.book; //Allow for multiple prop values but this one specific to our type
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
@@ -70,7 +73,7 @@ const BookCard = ({ book }) => {
   };
   return (
     <Card className={classes.card}>
-      <NextLink href="/">
+      <NextLink as={`/book/${book.id}`} href={`/book?title=${book.title}`}>
         <CardActionArea>
           <CardMedia
             className={classes.cardMedia}

@@ -25,23 +25,38 @@
     "@material-ui/styles": "^4.0.0-beta.2",
     "@zeit/next-typescript": "^1.1.1",
     "firebase": "^6.0.2",
+    "firebase-admin": "^7.4.0",
+    "firebase-functions": "^2.3.1",
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "rxfire": "^3.4.6",
     "rxjs": "^6.5.2"
   },
+  "engines": {
+    "node": "8"
+  },
   "scripts": {
-    "dev": "next",
+    "dev": "npm run clean && next",
     "build": "next build",
     "start": "next start",
     "export": "next export",
     "analyze": "cross-env BUNDLE_ANALYZE=both next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
-    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+    "build:functions": "npm run build:functions:lint && cpx \"functions/lib/**/*.*\" dist/functions",
+    "build:functions:lint": "cd functions && npm run lint && npm run build",
+    "build:public": "cpx \"static/**/*.*\" dist/public/static && cpx \"dist/functions/_next/static/**/*.*\" dist/public/_next/static",
+    "clean": "rimraf dist && rimraf functions/lib",
+    "copy:deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && cd dist/functions && npm install",
+    "firebase:build": "npm run clean && npm run build && npm run build:functions && npm run build:public && npm run copy:deps",
+    "firebase:serve": "npm run firebase:build && firebase serve",
+    "firebase:deploy": "npm run firebase:build && firebase deploy"
   },
   "devDependencies": {
     "@types/next": "^8.0.5",
-    "cross-env": "^5.2.0"
+    "cpx": "^1.5.0",
+    "cross-env": "^5.2.0",
+    "rimraf": "^2.6.3"
   }
 }

@@ -4,16 +4,25 @@
     "indexes": "firestore.indexes.json"
   },
   "functions": {
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run lint",
-      "npm --prefix \"$RESOURCE_DIR\" run build"
-    ]
+    "source": "dist/functions"
   },
   "hosting": [
     {
-      "public": "out",
-      "target": "ajsbooks-nextjs",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "public": "dist/public",
+      "rewrites": [
+        {
+          "source": "/book/**",
+          "function": "book"
+        },
+        {
+          "source": "/books",
+          "function": "books"
+        },
+        {
+          "source": "**/**",
+          "function": "index"
+        }
+      ]
     }
   ],
   "storage": {
