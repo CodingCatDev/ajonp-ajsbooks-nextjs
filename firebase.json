@@ -13,7 +13,7 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
-          "source": "/book/**",
+          "source": "/book{,/**}",
           "function": "book"
         },
         {
