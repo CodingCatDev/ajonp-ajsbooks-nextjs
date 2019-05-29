@@ -30,7 +30,7 @@ service cloud.firestore {
         allow update: if getRole('editor') == true || getRole('admin') == true;
         allow delete: if getRole('admin') == true;
 
-        match /sections/{sectionId}{
+        match /pages/{pageId}{
           allow create: if getRole('admin') == true;
           allow read: if true;
           allow update: if getRole('editor') == true || getRole('admin') == true;
