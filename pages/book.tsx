@@ -56,21 +56,22 @@ class book extends Component<
       console.log('Server only call.');
       if (id) {
         const res = await fetch(
-          `http://localhost:5001/ajonp-ajs-books/us-central1/api/book?id=${id}`
+          // Local example http://localhost:5001/ajonp-ajs-books/us-central1/api/
+          `https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/book?id=${id}`
         );
         const json = await res.json();
         retObj.book = json;
       }
       if (chapterId) {
         const res = await fetch(
-          `http://localhost:5001/ajonp-ajs-books/us-central1/api/chapter?id=${id}&chapterId=${chapterId}`
+          `https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/chapter?id=${id}&chapterId=${chapterId}`
         );
         const json = await res.json();
         retObj.chapter = json;
       }
       if (pageId) {
         const res = await fetch(
-          `http://localhost:5001/ajonp-ajs-books/us-central1/api/page?id=${id}&chapterId=${chapterId}&pageId=${pageId}`
+          `https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/page?id=${id}&chapterId=${chapterId}&pageId=${pageId}`
         );
         const json = await res.json();
         retObj.page = json;
