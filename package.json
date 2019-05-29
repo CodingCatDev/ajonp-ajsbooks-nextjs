@@ -47,7 +47,7 @@
     "build:functions:lint": "cd functions && npm run lint && npm run build",
     "build:public": "cpx \"static/**/*.*\" dist/public/static && cpx \"dist/functions/_next/static/**/*.*\" dist/public/_next/static",
     "clean": "rimraf dist && rimraf functions/lib && rimraf .next",
-    "copy:deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && cpx \"functions/node_modules/**/*.*\" dist/functions/node_modules && cpx \".next/**/*.*\" dist/functions/_next",
+    "copy:deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && cpx \"functions/node_modules/**/*.*\" dist/functions/node_modules && cpx \".next/serverless/**/*.*\" dist/functions/_next/serverless/ && cpx \".next/static/**/*.*\" dist/public/_next/static/",
     "firebase:build": "npm install && npm run clean && npm run build && npm run build:functions && npm run build:public && npm run copy:deps",
     "firebase:serve": "npm run firebase:build && firebase serve",
     "firebase:deploy": "npm run firebase:build && firebase deploy"
