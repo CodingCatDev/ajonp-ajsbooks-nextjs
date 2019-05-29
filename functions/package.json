@@ -12,7 +12,7 @@
   "engines": {
     "node": "8"
   },
-  "main": "lib/index.js",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.17.0",
     "cors": "^2.8.5",
