@@ -1,6 +1,6 @@
-import Book from './Book';
+import Book from './BookModel';
 
-export default class Author {
+export default class AuthorModel {
   books?: Book[];
   displayName?: string;
   email?: string;
@@ -12,7 +12,7 @@ export default class Author {
   uid?: string;
   website?: string;
 
-  public constructor(init?: Partial<Author>) {
+  public constructor(init?: Partial<AuthorModel>) {
     Object.assign(this, init);
   }
 }

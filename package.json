@@ -25,8 +25,7 @@
     "@material-ui/styles": "^4.0.0-beta.2",
     "@zeit/next-typescript": "^1.1.1",
     "firebase": "^6.0.2",
-    "firebase-admin": "^7.4.0",
-    "firebase-functions": "^2.3.1",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -37,7 +36,7 @@
     "node": "8"
   },
   "scripts": {
-    "dev": "npm run clean && next",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "export": "next export",
@@ -48,8 +47,8 @@
     "build:functions:lint": "cd functions && npm run lint && npm run build",
     "build:public": "cpx \"static/**/*.*\" dist/public/static && cpx \"dist/functions/_next/static/**/*.*\" dist/public/_next/static",
     "clean": "rimraf dist && rimraf functions/lib && rimraf .next",
-    "copy:deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && cd dist/functions && npm install",
-    "firebase:build": "npm run clean && npm run build && npm run build:functions && npm run build:public && npm run copy:deps",
+    "copy:deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && cpx \"functions/node_modules/**/*.*\" dist/functions/node_modules && cpx \".next/**/*.*\" dist/functions/_next",
+    "firebase:build": "npm install && npm run clean && npm run build && npm run build:functions && npm run build:public && npm run copy:deps",
     "firebase:serve": "npm run firebase:build && firebase serve",
     "firebase:deploy": "npm run firebase:build && firebase deploy"
   },

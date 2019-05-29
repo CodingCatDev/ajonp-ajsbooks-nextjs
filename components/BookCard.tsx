@@ -12,7 +12,7 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
 
-import Book from '../models/Book';
+import Book from '../models/BookModel';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -64,8 +64,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const BookCard = (prop: any) => {
-  const book: Book = prop.book; //Allow for multiple prop values but this one specific to our type
+const BookCard = (prop: { book: Book }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
@@ -73,18 +72,22 @@ const BookCard = (prop: any) => {
   };
   return (
     <Card className={classes.card}>
-      <NextLink href={`/book?id=${book.id}`} as={`/book/${book.slug}`}>
+      {/* 
+      Show this as an example of how we would use SSR
+      <NextLink href={`/book?id=${book.id}`} as={`/book/${book.slug}`}> 
+      */}
+      <NextLink href={`/book?id=${prop.book.id}`}>
         <CardActionArea>
           <CardMedia
             className={classes.cardMedia}
-            image={book.cover || '/static/images/cards/book.png'}
-            title={book.title}
+            image={prop.book.cover || '/static/images/cards/book.png'}
+            title={prop.book.title}
           />
           <CardContent className={classes.cardContent}>
-            <Typography component="h1">{book.title}</Typography>
+            <Typography component="h1">{prop.book.title}</Typography>
             <Typography component="p">
               Author:
-              {` ${book.authorDisplayName}`}
+              {` ${prop.book.authorDisplayName}`}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -105,7 +108,7 @@ const BookCard = (prop: any) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent className={classes.cardContent}>
           <Typography paragraph className={classes.cardDescription}>
-            {book.description}
+            {prop.book.description}
           </Typography>
         </CardContent>
       </Collapse>

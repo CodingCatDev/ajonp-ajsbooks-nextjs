@@ -1,9 +1,12 @@
 import { Timestamp } from '@firebase/firestore-types';
 
-export default class Book {
+import BookChapter from './ChapterModel';
+
+export default class BookModel {
   ageCategory?: string;
   authorDisplayName?: string;
   authorId?: string;
+  chapters?: BookChapter[];
   createdAt?: Timestamp | Date;
   description?: string;
   cover?: string;
@@ -19,9 +22,10 @@ export default class Book {
   status?: string;
   slug?: string;
   title?: string;
+  totalPages?: number;
   updatedAt?: Timestamp | Date;
 
-  public constructor(init?: Partial<Book>) {
+  public constructor(init?: Partial<BookModel>) {
     Object.assign(this, init);
   }
 }

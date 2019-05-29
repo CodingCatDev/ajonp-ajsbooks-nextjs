@@ -1,5 +1,7 @@
 import * as functions from 'firebase-functions';
 
+import * as app from './api';
+
 const onRequest = functions.https.onRequest;
 
 // These relative paths will exist after compiling everything
@@ -11,3 +13,6 @@ const book = require('./_next/serverless/pages/book');
 exports.index = onRequest((req, res) => index.render(req, res));
 exports.books = onRequest((req, res) => books.render(req, res));
 exports.book = onRequest((req, res) => book.render(req, res));
+
+// API
+exports.api = app.listener;
