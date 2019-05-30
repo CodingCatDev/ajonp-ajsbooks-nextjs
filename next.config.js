@@ -19,9 +19,19 @@ const nextConfig = {
 };
 
 const withTypescript = require('@zeit/next-typescript');
+
+const prodConfig = {
+  API_ENDPOINT: 'https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/'
+};
+
+const devConfig = {
+  API_ENDPOINT: 'http://localhost:5001/ajonp-ajs-books/us-central1/api/'
+};
+
 module.exports = withTypescript(
   {
-    target: 'serverless'
+    target: 'serverless',
+    env: process.env.NODE_ENV === 'production' ? prodConfig : devConfig
   },
   withBundleAnalyzer(nextConfig)
 );
