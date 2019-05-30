@@ -53,25 +53,34 @@ class book extends Component<
       }
     };
     if (req) {
-      console.log('Server only call.');
+      /* Just a note using Promise.all() would probably be faster */
       if (id) {
+        console.log('Server Fetching Book', id);
         const res = await fetch(
-          // Local example http://localhost:5001/ajonp-ajs-books/us-central1/api/
-          `https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/book?id=${id}`
+          /* 
+          API can be found in next.config.js 
+          Local: http://localhost:5001/ajonp-ajs-books/us-central1/api/
+          Remote: https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/
+          */
+          `${process.env.API_ENDPOINT}book?id=${id}`
         );
         const json = await res.json();
         retObj.book = json;
       }
       if (chapterId) {
+        console.log('Server Fetching Chapter', chapterId);
         const res = await fetch(
-          `https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/chapter?id=${id}&chapterId=${chapterId}`
+          `${process.env.API_ENDPOINT}chapter?id=${id}&chapterId=${chapterId}`
         );
         const json = await res.json();
         retObj.chapter = json;
       }
       if (pageId) {
+        console.log('Server Fetching Page', pageId);
         const res = await fetch(
-          `https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/page?id=${id}&chapterId=${chapterId}&pageId=${pageId}`
+          `${
+            process.env.API_ENDPOINT
+          }page?id=${id}&chapterId=${chapterId}&pageId=${pageId}`
         );
         const json = await res.json();
         retObj.page = json;
@@ -89,7 +98,11 @@ class book extends Component<
     });
 
     /* After client loads */
-    this.updateFirebaseRefs();
+    this.updateFirebaseRefs(
+      this.props.book.id as string,
+      this.props.chapter.id as string,
+      this.props.page.id as string
+    );
   }
   componentWillUnmount() {
     /* Stop observing */
@@ -102,53 +115,60 @@ class book extends Component<
     if (prevProps.router.query !== this.props.router.query) {
       const q = this.props.router.query;
       if (q) {
-        await this.setState({
-          book: { id: q.id },
-          chapter: { id: q.chapterId },
-          page: { id: q.pageId }
-        });
-        this.updateFirebaseRefs();
+        this.updateFirebaseRefs(
+          q.id as string,
+          q.chapterId as string,
+          q.pageId as string
+        );
       }
     }
   }
-  updateFirebaseRefs() {
-    const booksRef = this.state.firebase
-      .firestore()
-      .collection('books')
-      .doc(this.state.book.id);
-    // Book Detail
-    docData(booksRef, 'id')
-      .pipe(takeUntil(this.state.stopSubs))
-      .subscribe(book => {
-        this.setState({ book });
-      });
+  updateFirebaseRefs(
+    bookId: string,
+    chapterId: string | undefined,
+    pageId: string | undefined
+  ) {
+    if (bookId) {
+      const booksRef = this.state.firebase
+        .firestore()
+        .collection('books')
+        .doc(bookId);
+      // Book Detail
+      docData(booksRef, 'id')
+        .pipe(takeUntil(this.state.stopSubs))
+        .subscribe(book => {
+          this.setState({ book });
+        });
+    }
     // Chapter Detail
-    if (this.state.chapter.id) {
+    if (chapterId) {
       const chapterRef = this.state.firebase
         .firestore()
-        .collection(`books/${this.state.book.id}/chapters`)
-        .doc(this.state.chapter.id);
+        .collection(`books/${bookId}/chapters`)
+        .doc(chapterId);
       docData(chapterRef, 'id')
         .pipe(takeUntil(this.state.stopSubs))
         .subscribe(chapter => {
           this.setState({ chapter });
         });
 
-      if (this.state.page.id) {
+      if (pageId) {
         const pageRef = this.state.firebase
           .firestore()
-          .collection(
-            `books/${this.state.book.id}/chapters/${
-              this.state.chapter.id
-            }/pages`
-          )
-          .doc(this.state.page.id);
+          .collection(`books/${bookId}/chapters/${chapterId}/pages`)
+          .doc(pageId);
         docData(pageRef, 'id')
           .pipe(takeUntil(this.state.stopSubs))
           .subscribe(page => {
             this.setState({ page });
           });
+      } else {
+        /* Remove page state if not added */
+        this.state.page = new PageModel();
       }
+    } else {
+      /* Remove chapter state if not added */
+      this.state.chapter = new ChapterModel();
     }
   }
   render() {
