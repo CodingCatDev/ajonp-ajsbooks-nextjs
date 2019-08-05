@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function MenuAppBar() {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(false);
+  const [auth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
