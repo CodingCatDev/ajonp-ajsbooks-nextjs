@@ -35,7 +35,7 @@ function MenuAppDrawer() {
     right: false
   });
 
-  const toggleDrawer = (side, open) => event => {
+  const toggleDrawer = (side: string, open: boolean) => (event: any) => {
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
@@ -46,7 +46,7 @@ function MenuAppDrawer() {
     setState({ ...state, [side]: open });
   };
 
-  const fullList = side => (
+  const fullList = (side: string) => (
     <div
       className={classes.fullList}
       role="presentation"
