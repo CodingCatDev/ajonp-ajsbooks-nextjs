@@ -64,8 +64,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const BookCard = (prop: any) => {
-  const book: Book = prop.book; //Allow for multiple prop values but this one specific to our type
+const BookCard = ({ book }: any) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {

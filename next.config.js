@@ -1,5 +1,4 @@
-const withTypescript = require('@zeit/next-typescript');
-module.exports = withTypescript({
+module.exports = {
   target: 'serverless',
   distDir: './dist/functions/_next'
-});
+};
