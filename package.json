@@ -13,22 +13,21 @@
     "firebase",
     "materialui"
   ],
-  "author": "Alex Patterson <developer@ajonp.com> (https://ajonp.com/)",
+  "author": "Alex Patterson <alex@ajonp.com> (https://ajonp.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs/issues"
   },
   "homepage": "https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs#readme",
   "dependencies": {
-    "@material-ui/core": "^4.0.0-beta.2",
-    "@material-ui/icons": "^4.0.0-beta.0",
-    "@material-ui/styles": "^4.0.0-beta.2",
-    "@zeit/next-typescript": "^1.1.1",
-    "firebase": "^6.0.2",
-    "next": "^8.1.0",
+    "@material-ui/core": "^4.3.0",
+    "@material-ui/icons": "^4.2.1",
+    "@material-ui/styles": "^4.3.0",
+    "firebase": "^6.3.4",
+    "next": "^9.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "rxfire": "^3.4.6",
+    "rxfire": "^3.6.9",
     "rxjs": "^6.5.2"
   },
   "scripts": {
@@ -41,7 +40,8 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "devDependencies": {
-    "@types/next": "^8.0.5",
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "@types/next": "^8.0.6",
+    "typescript": "^3.5.3"
   }
 }
