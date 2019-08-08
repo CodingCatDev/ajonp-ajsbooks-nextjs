@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const BookCard = (prop: { book: Book }) => {
+const BookCard = ({ book }: { book: Book }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
@@ -76,18 +76,18 @@ const BookCard = (prop: { book: Book }) => {
       Show this as an example of how we would use SSR
       <NextLink href={`/book?id=${book.id}`} as={`/book/${book.slug}`}> 
       */}
-      <NextLink href={`/book?id=${prop.book.id}`}>
+      <NextLink href={`/book?id=${book.id}`}>
         <CardActionArea>
           <CardMedia
             className={classes.cardMedia}
-            image={prop.book.cover || '/static/images/cards/book.png'}
-            title={prop.book.title}
+            image={book.cover || '/static/images/cards/book.png'}
+            title={book.title}
           />
           <CardContent className={classes.cardContent}>
-            <Typography component="h1">{prop.book.title}</Typography>
+            <Typography component="h1">{book.title}</Typography>
             <Typography component="p">
               Author:
-              {` ${prop.book.authorDisplayName}`}
+              {` ${book.authorDisplayName}`}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -108,7 +108,7 @@ const BookCard = (prop: { book: Book }) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent className={classes.cardContent}>
           <Typography paragraph className={classes.cardDescription}>
-            {prop.book.description}
+            {book.description}
           </Typography>
         </CardContent>
       </Collapse>

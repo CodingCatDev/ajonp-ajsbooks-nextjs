@@ -1,14 +1,14 @@
-import { ServerStyleSheets } from '@material-ui/styles';
-import Document, { Head, Main, NextScript } from 'next/document';
-import React from 'react';
-import flush from 'styled-jsx/server';
+/* https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js */
 
+import React from 'react';
+import Document, { Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheets } from '@material-ui/styles';
 import theme from '../themes/theme';
 
 class MyDocument extends Document {
   render() {
     return (
-      <html lang="en" dir="ltr">
+      <html lang="en">
         <Head>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
@@ -20,7 +20,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
         </Head>
         <body>
@@ -69,12 +69,12 @@ MyDocument.getInitialProps = async ctx => {
   return {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
-    styles: (
-      <React.Fragment>
+    styles: [
+      <React.Fragment key="styles">
+        {initialProps.styles}
         {sheets.getStyleElement()}
-        {flush() || null}
       </React.Fragment>
-    )
+    ]
   };
 };
 

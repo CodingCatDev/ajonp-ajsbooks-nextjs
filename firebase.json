@@ -15,14 +15,6 @@
         {
           "source": "/book{,/**}",
           "function": "book"
-        },
-        {
-          "source": "/books",
-          "function": "books"
-        },
-        {
-          "source": "**/**",
-          "function": "index"
         }
       ]
     }

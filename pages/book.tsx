@@ -1,6 +1,6 @@
 import Grid from '@material-ui/core/Grid';
 import fetch from 'isomorphic-unfetch';
-import { RouterProps, withRouter } from 'next/router';
+import { NextRouter, withRouter } from 'next/router';
 import { Component } from 'react';
 import { docData } from 'rxfire/firestore';
 import { Subject } from 'rxjs';
@@ -19,7 +19,7 @@ class book extends Component<
     book: BookModel;
     chapter: ChapterModel;
     page: PageModel;
-    router: RouterProps;
+    router: NextRouter;
   },
   any
 > {
@@ -111,7 +111,7 @@ class book extends Component<
   stopSubs() {
     this.state.stopSubs.next(true);
   }
-  async componentDidUpdate(prevProps: { router: RouterProps }) {
+  async componentDidUpdate(prevProps: { router: NextRouter }) {
     if (prevProps.router.query !== this.props.router.query) {
       const q = this.props.router.query;
       if (q) {

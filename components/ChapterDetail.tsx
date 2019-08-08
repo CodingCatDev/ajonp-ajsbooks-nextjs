@@ -8,7 +8,7 @@ import BookModel from '../models/BookModel';
 import Chapter from '../models/ChapterModel';
 import PageModel from '../models/PageModel';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   card: {
     width: '100%',
     maxWidth: 400,
