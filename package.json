@@ -42,10 +42,10 @@
     "analyze": "cross-env BUNDLE_ANALYZE=both next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
-    "build:functions": "npm run build:functions:lint && cpx \"functions/lib/**/*.*\" dist/functions",
+    "build:functions": "npm run build:functions:lint && cpx \"functions/lib/functions/src/**/*.*\" dist/functions",
     "build:functions:lint": "cd functions && npm run lint && npm run build",
     "clean": "rimraf dist && rimraf functions/lib && rimraf .next",
-    "copy:deps": "cpx \"functions/*{package.json,package-lock.json}\" dist/functions && cpx \"functions/node_modules/**/*.*\" dist/functions/node_modules && cpx \".next/serverless/**/*.*\" dist/functions/_next/serverless/ && cpx \".next/static/**/*.*\" dist/public/_next/static/ && cpx \"static/**/*.*\" dist/public/static && cpx \"dist/functions/_next/static/**/*.*\" dist/public/_next/static && cpx \"dist/functions/_next/serverless/pages/*.html\" dist/public",
+    "copy:deps": "cpx \"functions/*{package.json,package-lock.json}\" dist/functions && ncp functions/node_modules/ dist/functions/node_modules && cpx \".next/serverless/**/*.*\" dist/functions/_next/serverless/ && cpx \".next/static/**/*.*\" dist/public/_next/static/ && cpx \"static/**/*.*\" dist/public/static && cpx \"dist/functions/_next/static/**/*.*\" dist/public/_next/static && cpx \"dist/functions/_next/serverless/pages/*.html\" dist/public",
     "firebase:build": "npm install && npm run clean && npm run build && npm run build:functions && npm run copy:deps",
     "firebase:serve": "npm run firebase:build && firebase serve",
     "firebase:deploy": "npm run firebase:build && firebase deploy"
@@ -54,6 +54,7 @@
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "cpx": "^1.5.0",
     "cross-env": "^5.2.0",
+    "ncp": "^2.0.0",
     "rimraf": "^2.6.3",
     "typescript": "^3.5.3"
   }
