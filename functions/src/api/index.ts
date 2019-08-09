@@ -2,7 +2,7 @@ import * as cors from 'cors';
 import * as express from 'express';
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
-
+import BookModel from '../../../models/BookModel';
 // Initialize Firebase Admin
 admin.initializeApp();
 
@@ -29,6 +29,22 @@ app.get('/book', async (req, res) => {
     }
   } else {
     res.status(403).send('Missing id');
+    return;
+  }
+});
+app.get('/books', async (req, res) => {
+  try {
+    const booksSnapshot = await admin
+      .firestore()
+      .collection('books')
+      .get();
+    const books: BookModel[] = [];
+    booksSnapshot.forEach(doc => {
+      books.push(doc.data());
+    });
+    res.json(books);
+  } catch (e) {
+    console.log(e);
     return;
   }
 });
