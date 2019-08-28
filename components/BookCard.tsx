@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   }
 });
 
-function WelcomeCard() {
+function BookCard() {
   const classes = useStyles();
 
   return (
@@ -44,4 +44,4 @@ function WelcomeCard() {
   );
 }
 
-export default WelcomeCard;
+export default BookCard;
