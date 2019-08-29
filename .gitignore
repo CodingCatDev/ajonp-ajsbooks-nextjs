@@ -4,4 +4,4 @@ out
 hosting*
 dist
 .firebase
-.next
+functions
