@@ -44,3 +44,95 @@
     at Function.Module._load (internal/modules/cjs/loader.js:585:3)
 [warn] ⚠  We were unable to load your functions code. (see above)
    - You may be able to run "npm run build" in your functions directory to resolve this.
+[debug] [2019-09-03T20:17:19.756Z] ----------------------------------------------------------------------
+[debug] [2019-09-03T20:17:19.758Z] Command:       /usr/local/bin/node /Users/ajonp/.npm-packages/bin/firebase serve
+[debug] [2019-09-03T20:17:19.758Z] CLI Version:   7.3.0
+[debug] [2019-09-03T20:17:19.758Z] Platform:      darwin
+[debug] [2019-09-03T20:17:19.758Z] Node Version:  v10.16.3
+[debug] [2019-09-03T20:17:19.759Z] Time:          Tue Sep 03 2019 16:17:19 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-09-03T20:17:19.759Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-09-03T20:17:19.764Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-09-03T20:17:19.764Z] > authorizing via signed-in user
+[debug] [2019-09-03T20:17:19.764Z] [iam] checking project ajonp-ajs-books for permissions ["firebase.projects.get"]
+[debug] [2019-09-03T20:17:19.765Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ajonp-ajs-books:testIamPermissions  
+
+[debug] [2019-09-03T20:17:19.943Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-03T20:17:19.945Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ajonp-ajs-books  
+ 
+[debug] [2019-09-03T20:17:20.138Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/ajonp/web/ajonp-ajsbooks-nextjs'...
+[info] 
+[debug] [2019-09-03T20:17:20.142Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ajonp-ajs-books/webApps/-/config  
+ 
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "10"
+[debug] [2019-09-03T20:17:20.407Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5001
+[info] i  functions: Watching "/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions" for Cloud Functions...
+[info] i  hosting[ajsbooks-nextjs]: Serving hosting files from: dist/public
+[info] ✔  hosting[ajsbooks-nextjs]: Local server: http://localhost:5000
+[debug] [2019-09-03T20:17:20.639Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions","node_version":"10.16.3"}
+[debug] [2019-09-03T20:17:20.639Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-03T20:17:20.641Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-03T20:17:20.642Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-03T20:17:20.642Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  Error: Cannot find module './_next/serverless/pages/books'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:562:25)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions/index.js:7:15)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+[warn] ⚠  We were unable to load your functions code. (see above)
+   - You may be able to run "npm run build" in your functions directory to resolve this.
+[debug] [2019-09-03T20:19:03.564Z] ----------------------------------------------------------------------
+[debug] [2019-09-03T20:19:03.566Z] Command:       /usr/local/bin/node /Users/ajonp/.npm-packages/bin/firebase serve
+[debug] [2019-09-03T20:19:03.566Z] CLI Version:   7.3.0
+[debug] [2019-09-03T20:19:03.566Z] Platform:      darwin
+[debug] [2019-09-03T20:19:03.566Z] Node Version:  v10.16.3
+[debug] [2019-09-03T20:19:03.567Z] Time:          Tue Sep 03 2019 16:19:03 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-09-03T20:19:03.567Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-09-03T20:19:03.572Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-09-03T20:19:03.572Z] > authorizing via signed-in user
+[debug] [2019-09-03T20:19:03.572Z] [iam] checking project ajonp-ajs-books for permissions ["firebase.projects.get"]
+[debug] [2019-09-03T20:19:03.574Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ajonp-ajs-books:testIamPermissions  
+
+[debug] [2019-09-03T20:19:04.733Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-03T20:19:04.736Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ajonp-ajs-books  
+ 
+[debug] [2019-09-03T20:19:04.901Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/ajonp/web/ajonp-ajsbooks-nextjs'...
+[info] 
+[debug] [2019-09-03T20:19:04.905Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ajonp-ajs-books/webApps/-/config  
+ 
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "10"
+[debug] [2019-09-03T20:19:05.133Z] <<< HTTP RESPONSE 200
+[info] i  hosting[ajsbooks-nextjs]: Serving hosting files from: dist/public
+[info] ✔  hosting[ajsbooks-nextjs]: Local server: http://localhost:5000
+[info] ✔  functions: Emulator started at http://localhost:5001
+[info] i  functions: Watching "/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions" for Cloud Functions...
+[debug] [2019-09-03T20:19:05.438Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions","node_version":"10.16.3"}
+[debug] [2019-09-03T20:19:05.439Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-03T20:19:05.442Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-03T20:19:05.442Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-03T20:19:05.443Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  Error: Cannot find module './_next/serverless/pages/books'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:562:25)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/Users/ajonp/web/ajonp-ajsbooks-nextjs/dist/functions/index.js:7:15)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+[warn] ⚠  We were unable to load your functions code. (see above)
+   - You may be able to run "npm run build" in your functions directory to resolve this.

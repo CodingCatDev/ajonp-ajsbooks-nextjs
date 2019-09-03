@@ -49,8 +49,8 @@
     "clean": "rimraf dist && rimraf functions/lib && rimraf .next",
     "copy:deps": "cpx \"*{package.json,package-lock.json}\" dist/functions && cd dist/functions && npm install",
     "firebase:build": "npm run clean && npm run build:functions && npm run build && npm run build:public && npm run copy:deps",
-    "firebase:serve": "npm run firebase:build && firebase serve",
-    "firebase:deploy": "npm run firebase:build && firebase deploy"
+    "firebase:serve": "npm run firebase:build && firebase serve --only hosting",
+    "firebase:deploy": "npm run firebase:build && firebase deploy --only hosting"
   },
   "devDependencies": {
     "cpx": "^1.5.0",
