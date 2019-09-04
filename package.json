@@ -43,7 +43,7 @@
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "build:functions": "npm run build:functions:lint && cpx \"functions/lib/functions/src/**/*.*\" dist/functions",
-    "build:functions:lint": "cd functions && npm run lint && npm run build",
+    "build:functions:lint": "cd functions && npm install && npm run lint && npm run build",
     "clean": "rimraf dist && rimraf functions/lib && rimraf .next",
     "copy:deps": "cpx \"functions/*{package.json,package-lock.json}\" dist/functions && ncp functions/node_modules/ dist/functions/node_modules && cpx \".next/serverless/**/*.*\" dist/functions/_next/serverless/ && cpx \".next/static/**/*.*\" dist/public/_next/static/ && cpx \"static/**/*.*\" dist/public/static && cpx \"dist/functions/_next/static/**/*.*\" dist/public/_next/static && cpx \"dist/functions/_next/serverless/pages/*.html\" dist/public",
     "firebase:build": "npm install && npm run clean && npm run build && npm run build:functions && npm run copy:deps",
