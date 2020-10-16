@@ -21,7 +21,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Container>
+      <>
         <Head>
           <title>AJ' Books</title>
         </Head>
@@ -33,7 +33,7 @@ class MyApp extends App {
             <Component {...pageProps} />
           </Grid>
         </ThemeProvider>
-      </Container>
+     </>
     );
   }
 }
