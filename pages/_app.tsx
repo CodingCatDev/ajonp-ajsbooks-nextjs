@@ -1,7 +1,7 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import { ThemeProvider } from '@material-ui/styles';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 
@@ -21,7 +21,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Container>
+      <>
         <Head>
           <title>AJ' Books</title>
         </Head>
@@ -33,7 +33,7 @@ class MyApp extends App {
             <Component {...pageProps} />
           </Grid>
         </ThemeProvider>
-      </Container>
+     </>
     );
   }
 }
