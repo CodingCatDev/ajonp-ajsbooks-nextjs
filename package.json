@@ -1,0 +1,61 @@
+{
+  "name": "ajonp-ajsbooks-nextjs",
+  "version": "0.0.1",
+  "description": "Next.js Example using Firestore, Firebase Hosting",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs.git"
+  },
+  "keywords": [
+    "nextjs",
+    "firestore",
+    "firebase",
+    "materialui"
+  ],
+  "author": "Alex Patterson <alex@ajonp.com> (https://ajonp.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs/issues"
+  },
+  "homepage": "https://github.com/AJONPLLC/ajonp-ajsbooks-nextjs#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.2",
+    "firebase": "^8.1.2",
+    "isomorphic-unfetch": "^3.1.0",
+    "next": "^9.5.5",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "rxfire": "^3.13.5",
+    "rxjs": "^6.6.3"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "analyze": "cross-env BUNDLE_ANALYZE=both next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+    "build:functions": "npm run build:functions:lint && cpx \"functions/lib/functions/src/**/*.*\" dist/functions",
+    "build:functions:lint": "cd functions && npm install && npm run lint && npm run build",
+    "clean": "rimraf dist && rimraf functions/lib && rimraf .next",
+    "copy:deps": "cpx \"functions/*{package.json,package-lock.json}\" dist/functions && ncp functions/node_modules/ dist/functions/node_modules && cpx \".next/serverless/**/*.*\" dist/functions/_next/serverless/ && cpx \".next/static/**/*.*\" dist/public/_next/static/ && cpx \"static/**/*.*\" dist/public/static && cpx \"dist/functions/_next/static/**/*.*\" dist/public/_next/static && cpx \"dist/functions/_next/serverless/pages/*.html\" dist/public",
+    "firebase:build": "npm install && npm run clean && npm run build && npm run build:functions && npm run copy:deps",
+    "firebase:serve": "npm run firebase:build && firebase serve",
+    "firebase:deploy": "npm run firebase:build && firebase deploy"
+  },
+  "devDependencies": {
+    "@zeit/next-bundle-analyzer": "^0.1.2",
+    "cpx": "^1.5.0",
+    "cross-env": "^5.2.1",
+    "ncp": "^2.0.0",
+    "rimraf": "^2.7.1",
+    "typescript": "^3.9.7"
+  }
+}

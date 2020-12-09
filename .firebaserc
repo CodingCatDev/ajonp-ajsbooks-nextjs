@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ajonp-ajs-books"
+  },
+  "targets": {
+    "ajonp-ajs-books": {
+      "hosting": {
+        "ajsbooks-nextjs": [
+          "ajsbooks-nextjs"
+        ]
+      }
+    }
+  }
+}
