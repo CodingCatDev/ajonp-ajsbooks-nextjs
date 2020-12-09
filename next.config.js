@@ -1,34 +1,33 @@
-const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
+const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 
 const nextConfig = {
-  analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
-  analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
+  analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
+  analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
   bundleAnalyzerConfig: {
     server: {
-      analyzerMode: 'static',
-      reportFilename: '../bundles/server.html'
+      analyzerMode: "static",
+      reportFilename: "../bundles/server.html",
     },
     browser: {
-      analyzerMode: 'static',
-      reportFilename: '../bundles/client.html'
-    }
+      analyzerMode: "static",
+      reportFilename: "../bundles/client.html",
+    },
   },
   webpack(config) {
     return config;
-  }
+  },
 };
 
 const prodConfig = {
-  API_ENDPOINT: 'https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/'
+  API_ENDPOINT: "https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/",
 };
 
 const devConfig = {
-  API_ENDPOINT: 'http://localhost:5001/ajonp-ajs-books/us-central1/api/'
+  API_ENDPOINT: "https://us-central1-ajonp-ajs-books.cloudfunctions.net/api/",
 };
 
-module.exports = 
-  {
-    target: 'serverless',
-    env: process.env.NODE_ENV === 'production' ? prodConfig : devConfig
-  },
+(module.exports = {
+  target: "serverless",
+  env: process.env.NODE_ENV === "production" ? prodConfig : devConfig,
+}),
   withBundleAnalyzer(nextConfig);
