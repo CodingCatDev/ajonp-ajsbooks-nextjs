@@ -11,9 +11,9 @@ export default async function loadFirebase() {
   const firebase = await import("firebase/app");
   await import("firebase/firestore");
   try {
-    if (!firebase.apps.length) {
-      const app = firebase.initializeApp(firebaseConfig);
-      firebase.firestore(app);
+    if (!firebase.default.apps.length) {
+      const app = firebase.default.initializeApp(firebaseConfig);
+      firebase.default.firestore(app);
     }
   } catch (err) {
     // we skip the "already exists" message which is

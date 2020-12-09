@@ -1,18 +1,18 @@
-import Grid from '@material-ui/core/Grid';
-import fetch from 'isomorphic-unfetch';
-import { NextRouter, withRouter } from 'next/router';
-import { Component } from 'react';
-import { docData } from 'rxfire/firestore';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import Grid from "@material-ui/core/Grid";
+import fetch from "isomorphic-unfetch";
+import { NextRouter, withRouter } from "next/router";
+import { Component } from "react";
+import { docData } from "rxfire/firestore";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
-import BookDetail from '../components/BookDetail';
-import BookPage from '../components/BookPage';
-import ChapterDetail from '../components/ChapterDetail';
-import loadFirebase from '../lib/firebase';
-import BookModel from '../models/BookModel';
-import ChapterModel from '../models/ChapterModel';
-import PageModel from '../models/PageModel';
+import BookDetail from "../components/BookDetail";
+import BookPage from "../components/BookPage";
+import ChapterDetail from "../components/ChapterDetail";
+import loadFirebase from "../lib/firebase";
+import BookModel from "../models/BookModel";
+import ChapterModel from "../models/ChapterModel";
+import PageModel from "../models/PageModel";
 
 class book extends Component<
   {
@@ -33,7 +33,7 @@ class book extends Component<
     book: {},
     chapter: {},
     page: {},
-    stopSubs: new Subject<boolean>()
+    stopSubs: new Subject<boolean>(),
   };
 
   static async getInitialProps({ req, query }: any) {
@@ -43,19 +43,19 @@ class book extends Component<
 
     const retObj = {
       book: {
-        id: id
+        id: id,
       },
       chapter: {
-        id: chapterId
+        id: chapterId,
       },
       page: {
-        id: pageId
-      }
+        id: pageId,
+      },
     };
     if (req) {
       /* Just a note using Promise.all() would probably be faster */
       if (id) {
-        console.log('Server Fetching Book', id);
+        console.log("Server Fetching Book", id);
         const res = await fetch(
           /* 
           API can be found in next.config.js 
@@ -68,7 +68,7 @@ class book extends Component<
         retObj.book = json;
       }
       if (chapterId) {
-        console.log('Server Fetching Chapter', chapterId);
+        console.log("Server Fetching Chapter", chapterId);
         const res = await fetch(
           `${process.env.API_ENDPOINT}chapter?id=${id}&chapterId=${chapterId}`
         );
@@ -76,11 +76,9 @@ class book extends Component<
         retObj.chapter = json;
       }
       if (pageId) {
-        console.log('Server Fetching Page', pageId);
+        console.log("Server Fetching Page", pageId);
         const res = await fetch(
-          `${
-            process.env.API_ENDPOINT
-          }page?id=${id}&chapterId=${chapterId}&pageId=${pageId}`
+          `${process.env.API_ENDPOINT}page?id=${id}&chapterId=${chapterId}&pageId=${pageId}`
         );
         const json = await res.json();
         retObj.page = json;
@@ -94,7 +92,7 @@ class book extends Component<
       book: this.props.book,
       chapter: this.props.chapter,
       page: this.props.page,
-      firebase: await loadFirebase()
+      firebase: await loadFirebase(),
     });
 
     /* After client loads */
@@ -129,37 +127,37 @@ class book extends Component<
     pageId: string | undefined
   ) {
     if (bookId) {
-      const booksRef = this.state.firebase
+      const booksRef = this.state.firebase.default
         .firestore()
-        .collection('books')
+        .collection("books")
         .doc(bookId);
       // Book Detail
-      docData(booksRef, 'id')
+      docData(booksRef, "id")
         .pipe(takeUntil(this.state.stopSubs))
-        .subscribe(book => {
+        .subscribe((book) => {
           this.setState({ book });
         });
     }
     // Chapter Detail
     if (chapterId) {
-      const chapterRef = this.state.firebase
+      const chapterRef = this.state.firebase.default
         .firestore()
         .collection(`books/${bookId}/chapters`)
         .doc(chapterId);
-      docData(chapterRef, 'id')
+      docData(chapterRef, "id")
         .pipe(takeUntil(this.state.stopSubs))
-        .subscribe(chapter => {
+        .subscribe((chapter) => {
           this.setState({ chapter });
         });
 
       if (pageId) {
-        const pageRef = this.state.firebase
+        const pageRef = this.state.firebase.default
           .firestore()
           .collection(`books/${bookId}/chapters/${chapterId}/pages`)
           .doc(pageId);
-        docData(pageRef, 'id')
+        docData(pageRef, "id")
           .pipe(takeUntil(this.state.stopSubs))
-          .subscribe(page => {
+          .subscribe((page) => {
             this.setState({ page });
           });
       } else {
